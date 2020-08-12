@@ -6,11 +6,7 @@ const { response } = require("express");
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    app.use(cors());
-    next();
-});
+app.use(cors({origin: '*'}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
