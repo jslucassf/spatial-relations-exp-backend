@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const Drawing = require("./models/drawing");
 const cors = require("cors");
-const { response } = require("express");
 
 const app = express();
 
@@ -17,7 +16,7 @@ app.get("/", (req, res) => {
 app.get("/next-id", async (req, res) => {
     const drawings = await Drawing.find();
     if(drawings.length > 0){
-        const nextID = await Drawing.sort({userID:-1}).limit(1);
+        const nextID = await Drawing.find().sort({userID:-1}).limit(1);
         res.send({"id": nextID[0].userID + 1});
     }else{
         res.send({"id": 0});
