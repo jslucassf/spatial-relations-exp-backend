@@ -2,7 +2,7 @@ const mongoose = require('../database');
 
 const drawingSchema = new mongoose.Schema({
     userID: {
-        type: Number,
+        type: String,
         required: true
     },
     relation: {
